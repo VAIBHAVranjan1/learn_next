@@ -9,7 +9,7 @@ const ClientNav = ({ session }: { session: any }) => {
       {session?.user ? (
         <>
           <Link href="/startup/create">
-            <span className="font-bold font-work-sans">Create</span>
+            <span>Create</span>
           </Link>
           <button onClick={() => signOut({ callbackUrl: "/" })}>
             <span>Logout</span>
