@@ -17,6 +17,23 @@
   --font-jetbrains: var(--font-jetbrains);
   --font-press: var(--font-press-start);
   --font-work-sans: var(--font-work-sans),
+
+  /* Primary Colors */
+  --color-primary-100: #FFE8F0;
+  --color-primary: #EE2B69; /* DEFAULT */
+
+  /* Secondary */
+  --color-secondary: #FBE843;
+
+  /* Black */
+  --color-black-100: #333333;
+  --color-black-200: #141413;
+  --color-black-300: #7D8087;
+  --color-black: #000000; /* DEFAULT */
+
+  /* White */
+  --color-white-100: #F7F7F7;
+  --color-white: #FFFFFF; /* DEFAULT */
 }
 
 @media (prefers-color-scheme: dark) {
