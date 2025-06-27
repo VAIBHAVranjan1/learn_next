@@ -1,19 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Define radius variable if not already set */
-  --radius: 0.5rem; /* Adjust this base value as needed */
+  --radius: 0.5rem;
 }
 
 @theme inline {
-  /* Fonts (existing) */
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-jetbrains: var(--font-jetbrains);
   --font-press: var(--font-press-start);
   --font-work-sans: var(--font-work-sans);
 
-  /* Colors (existing) */
   --color-primary-100: #ffe8f0;
   --color-primary: #ee2b69;
   --color-secondary: #fbe843;
@@ -24,25 +22,76 @@
   --color-white-100: #f7f7f7;
   --color-white: #ffffff;
 
-  /* Screens */
-  --screen-xs: 475px; /* New XS breakpoint */
+  --screen-xs: 475px;
 
-  /* Border Radius */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  /* Box Shadows */
   --shadow-100: 2px 2px 0px 0px rgb(0, 0, 0);
   --shadow-200: 2px 2px 0px 2px rgb(0, 0, 0);
   --shadow-300: 2px 2px 0px 2px rgb(238, 43, 105);
 }
 
-/* Optional: Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #ff4d88; /* Darker pink */
-    --shadow-100: 2px 2px 0px 0px rgb(255, 255, 255); /* White shadow in dark mode */
+    --color-primary: #ff4d88;
+    --shadow-100: 2px 2px 0px 0px rgb(255, 255, 255);
   }
 }
 
+@layer utilities{
+    .pink_container {
+        @apply w-full bg-primary min-h-screen md:min-h-[530px] 
+                flex flex-col justify-center items-center 
+                py-10 px-6 relative overflow-hidden;
+        
+        /* Pattern as pseudo-element for better control */
+        &::before {
+            content: '';
+            @apply absolute inset-0;
+            background-image: linear-gradient(
+            to right,
+            transparent 49.5%,
+            rgba(251, 232, 67, 0.2) 49.5%,
+            rgba(251, 232, 67, 0.6) 50.5%,
+            transparent 50.5%
+            );
+            background-size: 5% 100%;
+            background-position: center;
+            background-repeat: repeat-x;
+            pointer-events: none;
+        }
+    }
+
+    .heading {
+        @apply uppercase bg-black px-6 py-3 font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+    }
+
+    .sub-heading {
+        @apply font-medium text-[20px] text-white max-w-2xl text-center break-words;
+    }
+
+    .tag-tri {
+        @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
+    }
+
+    /* Seach form */
+     .search-form {
+        @apply max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5;
+    }
+
+    .search-input {
+        @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
+    }
+
+    .search-btn {
+        @apply w-[50px] h-[50px] rounded-full bg-black 
+                flex justify-center items-center
+                transition-colors duration-200 
+                hover:bg-gray-800 focus:outline-none 
+                focus:ring-2 focus:ring-primary;
+        /* If you must use !important */
+        /* @apply !w-[50px] !h-[50px] ... */
+    }
+}
